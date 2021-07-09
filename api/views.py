@@ -1,7 +1,8 @@
 """ views.pu"""
 from rest_framework import viewsets, permissions, status
-from rest_framework.response import Response
 
+from rest_framework.response import Response
+from django.db.models import Q
 from .models import Contrat, Event, Client
 
 from .serializers import ClientSerializer, EventSerializer, ContratSerializer
@@ -13,9 +14,11 @@ class ClientViewSet(viewsets.ModelViewSet):
     """
     API Client endpoint which displays a list of all clients.
     """
-    queryset = Client.objects.all()
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
+
+    def get_queryset(self):
+        return Client.objects.filter(sales_contact=self.request.user)
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -29,7 +32,7 @@ class ContratViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
 
     def get_queryset(self):
-        return Contrat.objects.all()
+        return Contrat.objects.filter(sales_contact=self.request.user)
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -43,7 +46,10 @@ class EventViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
 
     def get_queryset(self):
-        return Event.objects.all()
+        vendor = Q(client__contrat__sales_contact=self.request.user)
+        support = Q(support_contact=self.request.user)
+        event = Event.objects.filter(vendor | support)
+        return event
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)

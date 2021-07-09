@@ -72,12 +72,12 @@ class Event(TimeStampModel):
     event_date = models.DateTimeField(verbose_name="Date de l'événement")
 
     class EventStatus(models.TextChoices):
-        NEW = 'Nouveau'
-        IN_PROGRESS = 'En Préparation'
+        CREATE = 'Créé'
+        AFFECTED = 'Affecté'
         ENDED = 'Terminé'
 
     event_status = models.CharField(max_length=20, choices=EventStatus.choices,
-                                    default=EventStatus.NEW, blank=False, null=False,
+                                    default=EventStatus.CREATE, blank=False, null=False,
                                     verbose_name="Status de l'évenement")
     attendees = models.PositiveIntegerField(verbose_name='Personnes attendues')
     notes = models.TextField(max_length=2048, blank=True)

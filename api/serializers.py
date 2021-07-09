@@ -7,6 +7,7 @@ from rest_framework.validators import UniqueValidator
 
 from . import models
 from user.models import User
+from .models import Client, Contrat
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -60,10 +61,19 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
     )
     sales_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
 
+
+    def create(self, validated_data):
+        new_client = Client.objects.create(**validated_data)
+        new_client.sales_contact = self.context["request"].user
+        new_client.save()
+        return new_client
+
+
     class Meta:
         model = models.Client
         fields = ['id', 'url', 'company_name', 'last_name', 'first_name', 'phone', 'email',
                   'sales_contact', 'prospect']
+        read_only_fields = ['sales_contact']
 
 
 class ContratSerializer(serializers.HyperlinkedModelSerializer):
@@ -73,16 +83,25 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
     sales_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
     client = serializers.SlugRelatedField(queryset=models.Client.objects.all(), slug_field='company_name')
 
+    def create(self, validated_data):
+        new_contrat = Contrat.objects.create(**validated_data)
+        new_contrat.sales_contact = self.context["request"].user
+        new_contrat.save()
+        return new_contrat
+
     class Meta:
         model = models.Contrat
         fields = ['url', 'sales_contact', 'client', 'status', 'amount',
                   'payement_due', 'event']
+        read_only_fields = ['sales_contact']
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
     contrat = serializers.ReadOnlyField(source='Event.client')
     support_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
     event_date = serializers.DateTimeField(format="%Y-%m-%dT%H:%M")
+
     class Meta:
         model = models.Event
         fields = ['url', 'client', 'contrat',  'support_contact', 'event_date', 'event_status', 'attendees', 'notes']
+        read_only_fields = ['support_contact']
