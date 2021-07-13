@@ -2,7 +2,6 @@
 from rest_framework import viewsets, permissions, status
 
 from rest_framework.response import Response
-from django.db.models import Q
 from .models import Contrat, Event, Client
 
 from .serializers import ClientSerializer, EventSerializer, ContratSerializer
@@ -15,10 +14,10 @@ class ClientViewSet(viewsets.ModelViewSet):
     API Client endpoint which displays a list of all clients.
     """
     serializer_class = ClientSerializer
-    permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
+    permission_classes = [permissions.IsAuthenticated, VendorTeam]
 
     def get_queryset(self):
-        return Client.objects.filter(sales_contact=self.request.user)
+        return Client.objects.all()
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -29,10 +28,10 @@ class ContratViewSet(viewsets.ModelViewSet):
     API Contract endpoint which displays a list of all Contracts.
     """
     serializer_class = ContratSerializer
-    permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
+    permission_classes = [permissions.IsAuthenticated, VendorTeam]
 
     def get_queryset(self):
-        return Contrat.objects.filter(sales_contact=self.request.user)
+        return Contrat.objects.all()
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -43,13 +42,9 @@ class EventViewSet(viewsets.ModelViewSet):
     API Event endpoint which displays a list of all Events.
     """
     serializer_class = EventSerializer
-    permission_classes = [permissions.IsAuthenticated, VendorTeam, SupportTeam]
+    permission_classes = [permissions.IsAuthenticated, SupportTeam]
+    queryset = Event.objects.all()
 
-    def get_queryset(self):
-        vendor = Q(client__contrat__sales_contact=self.request.user)
-        support = Q(support_contact=self.request.user)
-        event = Event.objects.filter(vendor | support)
-        return event
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)

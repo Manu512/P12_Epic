@@ -7,7 +7,7 @@ from rest_framework.validators import UniqueValidator
 
 from . import models
 from user.models import User
-from .models import Client, Contrat
+from .models import Client, Contrat, Event
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -59,49 +59,95 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
     email = serializers.EmailField(
             validators=[UniqueValidator(models.Client.objects.all())]
     )
-    sales_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
+    sales_contact = serializers.StringRelatedField(many=False)
+    date_updated = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
+    date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
+    prospect = serializers.BooleanField(default=True)
 
 
     def create(self, validated_data):
+        validated_data['sales_contact'] = self.context['request'].user
         new_client = Client.objects.create(**validated_data)
-        new_client.sales_contact = self.context["request"].user
         new_client.save()
         return new_client
-
 
     class Meta:
         model = models.Client
         fields = ['id', 'url', 'company_name', 'last_name', 'first_name', 'phone', 'email',
-                  'sales_contact', 'prospect']
-        read_only_fields = ['sales_contact']
+                  'sales_contact', 'prospect', 'date_created', 'date_updated']
+        # read_only_fields = ['sales_contact']
+        extra_kwargs = {
+                'date_created':  {'read_only': True},
+                'date_updated':  {'read_only': True},
+                'sales_contact': {'read_only': True},
+        }
 
 
 class ContratSerializer(serializers.HyperlinkedModelSerializer):
-
     amount = serializers.IntegerField()
     payement_due = serializers.DateField(format="%Y-%m-%d")
-    sales_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
+    sales_contact = serializers.StringRelatedField(many=False)
     client = serializers.SlugRelatedField(queryset=models.Client.objects.all(), slug_field='company_name')
+    date_updated = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
+    date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
 
     def create(self, validated_data):
+        validated_data['sales_contact'] = self.context['request'].user
         new_contrat = Contrat.objects.create(**validated_data)
-        new_contrat.sales_contact = self.context["request"].user
         new_contrat.save()
         return new_contrat
+
+    def save(self, **kwargs):
+        validated_data = {**self.validated_data, **kwargs}
+
+        if self.instance is not None:
+            self.instance = self.update(self.instance, validated_data)
+            assert self.instance is not None, (
+                    '`update()` did not return an object instance.'
+            )
+            if validated_data['status']:
+                self.instance.client.prospect = False
+                self.instance = self.update(self.instance, validated_data)
+                Client.objects.update(id=self.instance.client_id, prospect=False)
+                event_exist = Event.objects.filter(contrat_id=self.instance.pk).exists()
+                if not event_exist:
+                    evt = Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
+        else:
+            self.instance = self.create(validated_data)
+            assert self.instance is not None, (
+                    '`create()` did not return an object instance.'
+            )
+            if validated_data['status']:
+                Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
+                Client.objects.update(id=self.instance.client_id, prospect=False)
+
+        return self.instance
 
     class Meta:
         model = models.Contrat
         fields = ['url', 'sales_contact', 'client', 'status', 'amount',
-                  'payement_due', 'event']
-        read_only_fields = ['sales_contact']
+                  'payement_due', 'date_created', 'date_updated']
+        extra_kwargs = {
+                'date_created':  {'read_only': True},
+                'date_updated':  {'read_only': True},
+                'sales_contact': {'read_only': True},
+        }
 
 
 class EventSerializer(serializers.HyperlinkedModelSerializer):
-    contrat = serializers.ReadOnlyField(source='Event.client')
-    support_contact = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
+    contrat = serializers.HyperlinkedRelatedField(many=False, read_only=True, view_name='contrat-detail')
+    sales_contact = serializers.StringRelatedField(many=False)
     event_date = serializers.DateTimeField(format="%Y-%m-%dT%H:%M")
+    date_updated = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
+    date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
+
 
     class Meta:
         model = models.Event
-        fields = ['url', 'client', 'contrat',  'support_contact', 'event_date', 'event_status', 'attendees', 'notes']
-        read_only_fields = ['support_contact']
+        fields = ['contrat', 'url', 'client', 'sales_contact', 'support_contact', 'event_date', 'event_status', 'attendees',
+                  'notes', 'date_created', 'date_updated']
+        extra_kwargs = {
+                'date_created':    {'read_only': True},
+                'date_updated':    {'read_only': True},
+                'support_contact': {'read_only': True},
+        }

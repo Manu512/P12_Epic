@@ -3,7 +3,7 @@ from rest_framework import permissions
 from api.models import Contrat,Client,Event
 
 def is_vendor(user):
-    return user.groups.filter(name='Equipe commercial').exists()
+    return user.groups.filter(name='Equipe commerciale').exists()
 
 def is_support(user):
     return user.groups.filter(name='Equipe support').exists()
@@ -19,13 +19,22 @@ def is_affected(user, obj):
     return r
 
 
-
 class VendorTeam(permissions.BasePermission):
     """
     Custom permission to only allow vendors of an object to view it.
     """
+
     def has_permission(self, request, view):
-        return True
+        access = False
+
+        if request.method in permissions.SAFE_METHODS:
+            access = True
+        elif request.method == 'DELETE':
+            access = False
+        elif is_vendor(request.user):
+            access = True
+
+        return access
 
     def has_object_permission(self, request, view, obj):
         # Read permissions are allowed to any request,
@@ -33,6 +42,8 @@ class VendorTeam(permissions.BasePermission):
         access = False
         if request.method in permissions.SAFE_METHODS:
             access = True
+        elif request.method == 'DELETE':
+            access = False
         elif is_affected(request.user, obj):
             access = True
         return access
@@ -40,7 +51,16 @@ class VendorTeam(permissions.BasePermission):
 
 class SupportTeam(permissions.BasePermission):
     def has_permission(self, request, view):
-        return True
+        access = False
+
+        if request.method in permissions.SAFE_METHODS:
+            access = True
+        elif request.method == 'DELETE':
+            access = False
+        elif is_support(request.user):
+            access = True
+
+        return access
 
     def has_object_permission(self, request, view, obj):
         # Read permissions are allowed to any request,
@@ -48,6 +68,8 @@ class SupportTeam(permissions.BasePermission):
         access = False
         if request.method in permissions.SAFE_METHODS:
             access = True
+        elif request.method == 'DELETE':
+            access = False
         elif is_affected(request.user, obj):
             access = True
         return access

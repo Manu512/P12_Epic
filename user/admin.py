@@ -30,7 +30,6 @@ class UserChangeForm(forms.ModelForm):
 class CustomUserAdmin(UserAdmin):
     model = User
 
-
     readonly_fields = [
         'last_login', 'date_joined'
     ]
@@ -39,14 +38,14 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('username', 'password')}),
         ('Info Personnel', {'fields': ('first_name', 'last_name', 'email')}),
         ('Permissions', {
-            'fields': ('team', 'is_active', 'groups'),
+            'fields': ('team', 'is_active',  'is_staff', 'groups'),
         }),
         ('Historique', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'last_name',  'first_name',  'team', 'email', 'password1', 'password2'),
+            'fields': ('username', 'last_name',  'first_name', 'is_staff', 'team', 'email', 'password1', 'password2'),
         }),
     )
     list_display = ('username', 'first_name', 'last_name', 'team')
@@ -54,7 +53,6 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('first_name', 'last_name', 'email')
     ordering = ('date_joined',)
     filter_horizontal = ('groups', 'user_permissions',)
-
 
 
 

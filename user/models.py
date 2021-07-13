@@ -4,10 +4,12 @@ from django.contrib.auth.models import Group
 from django.contrib import admin
 # Create your models here.
 from django.contrib.auth.models import AbstractUser, Group
+from django.utils.translation import gettext_lazy as _
 
 vendor_group, created = Group.objects.get_or_create(name='Equipe commerciale')
 support_group, created = Group.objects.get_or_create(name='Equipe support')
 manager_group, created = Group.objects.get_or_create(name='Equipe de gestion')
+
 
 class User(AbstractUser):
 
@@ -24,7 +26,11 @@ class User(AbstractUser):
         VENDOR = 'Equipe commerciale'
         SUPPORT = 'Equipe support'
 
-
+    is_staff = models.BooleanField(
+        _('staff status'),
+        default=True,
+        help_text=_('Designates whether the user can log into this admin site.'),
+    )
     team = models.CharField(max_length=20, choices=Team.choices,
                             default=Team.MANAGER, verbose_name='Equipe',
                             null=False, blank=False)
@@ -32,3 +38,4 @@ class User(AbstractUser):
         ordering = ['id']
         verbose_name = "Utilisateur"
         verbose_name_plural = "Utilisateurs"
+

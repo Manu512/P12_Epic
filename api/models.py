@@ -27,7 +27,8 @@ class Client(TimeStampModel):
     phone = PhoneNumberField(verbose_name='Téléphone')
     company_name = models.CharField('Compagnie', max_length=250)
     sales_contact = models.ForeignKey(verbose_name='Commercial', to=settings.AUTH_USER_MODEL,
-                                      related_name='sales_by', on_delete=models.CASCADE)
+                                      related_name='sales_by', on_delete=models.CASCADE,
+                                      limit_choices_to={'groups__name': "Equipe commercial"},)
     prospect = models.BooleanField(default=True)
 
     def __str__(self):
@@ -45,7 +46,7 @@ class Contrat(TimeStampModel):
     Définition de l'objet Contract
     """
     sales_contact = models.ForeignKey(verbose_name='Commercial', to=settings.AUTH_USER_MODEL, related_name='sold_by',
-                                      on_delete=models.CASCADE)
+                                      limit_choices_to={'groups__name': "Equipe commercial"}, on_delete=models.CASCADE)
     client = models.ForeignKey(to='Client', on_delete=models.CASCADE)
     status = models.BooleanField(verbose_name='Contrat signé')
     amount = models.FloatField(verbose_name='Montant')
@@ -64,12 +65,13 @@ class Event(TimeStampModel):
     """
     Définition de l'objet Event
     """
-    id = models.OneToOneField(verbose_name='Contrat', to='Contrat', on_delete=models.CASCADE, primary_key=True,
+    contrat = models.OneToOneField(verbose_name='Contrat', to='Contrat', on_delete=models.CASCADE, primary_key=True,
                               unique=True)
     client = models.ForeignKey(to='Client', on_delete=models.CASCADE)
     support_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                        related_name='support_by', verbose_name='Assigné à')
-    event_date = models.DateTimeField(verbose_name="Date de l'événement")
+                                        limit_choices_to={'groups__name': "Equipe support"},
+                                        related_name='support_by', verbose_name='Assigné à', blank=True, null=True)
+    event_date = models.DateTimeField(verbose_name="Date de l'événement", null=True, blank=True)
 
     class EventStatus(models.TextChoices):
         CREATE = 'Créé'
@@ -79,7 +81,7 @@ class Event(TimeStampModel):
     event_status = models.CharField(max_length=20, choices=EventStatus.choices,
                                     default=EventStatus.CREATE, blank=False, null=False,
                                     verbose_name="Status de l'évenement")
-    attendees = models.PositiveIntegerField(verbose_name='Personnes attendues')
+    attendees = models.PositiveIntegerField(verbose_name='Personnes attendues', default=1)
     notes = models.TextField(max_length=2048, blank=True)
 
     def __str__(self):
