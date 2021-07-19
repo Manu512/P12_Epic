@@ -12,10 +12,10 @@ from .models import Client, Contrat, Event
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
-            validators=[UniqueValidator(User.objects.all())]
+        validators=[UniqueValidator(User.objects.all())]
     )
     username = serializers.EmailField(
-            validators=[UniqueValidator(User.objects.all())]
+        validators=[UniqueValidator(User.objects.all())]
     )
 
     class Meta:
@@ -57,13 +57,12 @@ class UserSerializer(serializers.ModelSerializer):
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.IntegerField(read_only=True)
     email = serializers.EmailField(
-            validators=[UniqueValidator(models.Client.objects.all())]
+        validators=[UniqueValidator(models.Client.objects.all())]
     )
     sales_contact = serializers.StringRelatedField(many=False)
     date_updated = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
     date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
     prospect = serializers.BooleanField(default=True)
-
 
     def create(self, validated_data):
         validated_data['sales_contact'] = self.context['request'].user
@@ -77,9 +76,9 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
                   'sales_contact', 'prospect', 'date_created', 'date_updated']
         # read_only_fields = ['sales_contact']
         extra_kwargs = {
-                'date_created':  {'read_only': True},
-                'date_updated':  {'read_only': True},
-                'sales_contact': {'read_only': True},
+            'date_created': {'read_only': True},
+            'date_updated': {'read_only': True},
+            'sales_contact': {'read_only': True},
         }
 
 
@@ -103,7 +102,7 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
         if self.instance is not None:
             self.instance = self.update(self.instance, validated_data)
             assert self.instance is not None, (
-                    '`update()` did not return an object instance.'
+                '`update()` did not return an object instance.'
             )
             if validated_data['status']:
                 self.instance.client.prospect = False
@@ -115,7 +114,7 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
         else:
             self.instance = self.create(validated_data)
             assert self.instance is not None, (
-                    '`create()` did not return an object instance.'
+                '`create()` did not return an object instance.'
             )
             if validated_data['status']:
                 Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
@@ -128,26 +127,26 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'sales_contact', 'client', 'status', 'amount',
                   'payement_due', 'date_created', 'date_updated']
         extra_kwargs = {
-                'date_created':  {'read_only': True},
-                'date_updated':  {'read_only': True},
-                'sales_contact': {'read_only': True},
+            'date_created': {'read_only': True},
+            'date_updated': {'read_only': True},
+            'sales_contact': {'read_only': True},
         }
 
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
-    contrat = serializers.HyperlinkedRelatedField(many=False, read_only=True, view_name='contrat-detail')
+class EventSerializer(serializers.ModelSerializer):
+    contrat = serializers.StringRelatedField(many=False)
     sales_contact = serializers.StringRelatedField(many=False)
+    client = serializers.StringRelatedField(many=False)
     event_date = serializers.DateTimeField(format="%Y-%m-%dT%H:%M")
     date_updated = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
     date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
 
-
     class Meta:
         model = models.Event
-        fields = ['contrat', 'url', 'client', 'sales_contact', 'support_contact', 'event_date', 'event_status', 'attendees',
-                  'notes', 'date_created', 'date_updated']
+        fields = ['contrat', 'url', 'client', 'sales_contact', 'support_contact', 'event_date', 'event_status',
+                  'attendees', 'notes', 'date_created', 'date_updated']
         extra_kwargs = {
-                'date_created':    {'read_only': True},
-                'date_updated':    {'read_only': True},
-                'support_contact': {'read_only': True},
+            'date_created': {'read_only': True},
+            'date_updated': {'read_only': True},
+            'support_contact': {'read_only': True},
         }

@@ -1,5 +1,8 @@
 """ views.pu"""
+import django_filters
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions, status
+from rest_framework.filters import SearchFilter
 
 from rest_framework.response import Response
 from .models import Contrat, Event, Client
@@ -15,6 +18,7 @@ class ClientViewSet(viewsets.ModelViewSet):
     """
     serializer_class = ClientSerializer
     permission_classes = [permissions.IsAuthenticated, VendorTeam]
+    filterset_fields = ['last_name', 'email']
 
     def get_queryset(self):
         return Client.objects.all()
@@ -31,7 +35,22 @@ class ContratViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, VendorTeam]
 
     def get_queryset(self):
-        return Contrat.objects.all()
+        queryset = Contrat.objects.all()
+        client = self.request.query_params.get('client')
+        if client is not None:
+            queryset = queryset.filter(client__last_name__icontains=client)
+
+        date = self.request.query_params.get('date')
+        if date is not None:
+            queryset = queryset.filter(client__contrat__date_created__day=date)
+
+        amount = self.request.query_params.get('amount')
+        if amount is not None:
+            queryset = queryset.filter(client__contrat__amount=amount)
+
+
+        return queryset
+
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -43,8 +62,20 @@ class EventViewSet(viewsets.ModelViewSet):
     """
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticated, SupportTeam]
-    queryset = Event.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = ['event_date']
 
+    def get_queryset(self):
+    # TODO : Les filtres !!!!
+        queryset = Event.objects.all()
+        client = self.request.query_params.get('client')
+        if client is not None:
+            queryset = queryset.filter(client__last_name__icontains=client)
+
+        email = self.request.query_params.get('email')
+        if email is not None:
+            queryset = queryset.filter(client__email__icontains=email)
+        return queryset
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)

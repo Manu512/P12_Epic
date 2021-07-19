@@ -32,8 +32,7 @@ class Client(TimeStampModel):
     prospect = models.BooleanField(default=True)
 
     def __str__(self):
-        return "{} {} de la compagnie {} - Téléphone : {}".format(self.last_name, self.first_name, self.company_name,
-                                                                  self.phone)
+        return "{} - {} {} - {}".format(self.company_name, self.last_name, self.first_name, self.email)
 
     class Meta:
         ordering = ['company_name']
@@ -53,7 +52,11 @@ class Contrat(TimeStampModel):
     payement_due = models.DateField(verbose_name='Payement au')
 
     def __str__(self):
-        return "Contrat {} - Suivi par {}".format(self.client, self.sales_contact)
+        if self.status:
+            state = "Signé"
+        else:
+            state = "Négociation en cours"
+        return "{} - {} - {}".format(self.client, self.sales_contact, state)
 
     class Meta:
         ordering = ['payement_due']

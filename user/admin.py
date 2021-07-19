@@ -2,7 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
+from django.shortcuts import get_object_or_404
 
 from .models import User
 
@@ -20,7 +20,7 @@ class UserChangeForm(forms.ModelForm):
 
         if commit:
             user.save()
-        return user
+        return get_object_or_404(User, pk=user.pk)
 
     class Meta:
         model = User
