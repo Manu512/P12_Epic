@@ -1,7 +1,5 @@
 """ Gestion des Permissions """
 from rest_framework import permissions
-from api.models import Contrat,Client,Event
-
 
 
 class VendorTeam(permissions.BasePermission):

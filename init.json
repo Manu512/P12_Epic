@@ -380,7 +380,7 @@
 		"model": "user.user",
 		"pk": 1,
 		"fields": {
-			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$VTNzNVJ1aWpMY1NGOHllQ2tKb0x5UQ$Yw33cGSV6/CUUdzQ6CG7Vg",
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
 			"last_login": "2021-07-19T10:54:58.445Z",
 			"is_superuser": true,
 			"username": "admin",
@@ -401,10 +401,10 @@
 		"model": "user.user",
 		"pk": 2,
 		"fields": {
-			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$VTNzNVJ1aWpMY1NGOHllQ2tKb0x5UQ$Yw33cGSV6/CUUdzQ6CG7Vg",
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
 			"last_login": "2021-07-19T10:55:31.479Z",
 			"is_superuser": false,
-			"username": "c_bernard",
+			"username": "commercial1",
 			"first_name": "Bernard",
 			"last_name": "WALT",
 			"email": "commercial@epic.fr",
@@ -422,10 +422,10 @@
 		"model": "user.user",
 		"pk": 3,
 		"fields": {
-			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$VTNzNVJ1aWpMY1NGOHllQ2tKb0x5UQ$Yw33cGSV6/CUUdzQ6CG7Vg",
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
 			"last_login": "2021-07-15T12:38:47.663Z",
 			"is_superuser": false,
-			"username": "s_eliane",
+			"username": "support1",
 			"first_name": "Rogers",
 			"last_name": "MARTA",
 			"email": "marta@epic.fr",
@@ -443,10 +443,10 @@
 		"model": "user.user",
 		"pk": 4,
 		"fields": {
-			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$VTNzNVJ1aWpMY1NGOHllQ2tKb0x5UQ$Yw33cGSV6/CUUdzQ6CG7Vg",
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
 			"last_login": "2021-07-19T10:00:05.856Z",
 			"is_superuser": false,
-			"username": "m_manu",
+			"username": "management",
 			"first_name": "Emmanuel",
 			"last_name": "WALDNER",
 			"email": "manu@epic.fr",
@@ -458,6 +458,123 @@
 				3
 			],
 			"user_permissions": []
+		}
+	},
+	{
+		"model": "user.user",
+		"pk": 5,
+		"fields": {
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
+			"last_login": "2021-07-19T10:00:05.856Z",
+			"is_superuser": false,
+			"username": "commercial2",
+			"first_name": "Laurent",
+			"last_name": "WALDNER",
+			"email": "laurent@epic.fr",
+			"is_active": true,
+			"date_joined": "2021-07-13T07:31:50.752Z",
+			"is_staff": true,
+			"team": "Equipe commerciale",
+			"groups": [
+				1
+			],
+			"user_permissions": []
+		}
+	},
+	{
+		"model": "user.user",
+		"pk": 6,
+		"fields": {
+			"password": "argon2$argon2id$v=19$m=102400,t=2,p=8$TFlBZWNZVEtpeFE0VVQzOGxpZVk3bw$B+zGmO7usz9PIcfKlq+iZA",
+			"last_login": "2021-07-19T10:00:05.856Z",
+			"is_superuser": false,
+			"username": "support2",
+			"first_name": "Estelle",
+			"last_name": "WALDNER",
+			"email": "estelle@epic.fr",
+			"is_active": true,
+			"date_joined": "2021-07-13T07:31:50.752Z",
+			"is_staff": true,
+			"team": "Equipe support",
+			"groups": [
+				2
+			],
+			"user_permissions": []
+		}
+	},
+	{
+		"model": "api.client",
+		"pk": 1,
+		"fields": {
+			"date_created": "2021-07-13T08:42:59.210Z",
+			"date_updated": "2021-07-13T08:51:57.866Z",
+			"first_name": "Alexia",
+			"last_name": "Frey",
+			"email": "alexia@finance.fr",
+			"phone": "+33612457845",
+			"company_name": "Finance",
+			"sales_contact": 5,
+			"prospect": true
+		}
+	},
+	{
+		"model": "api.client",
+		"pk": 2,
+		"fields": {
+			"date_created": "2021-06-13T08:42:59.210Z",
+			"date_updated": "2021-07-13T08:51:57.866Z",
+			"first_name": "Nadine",
+			"last_name": "Moog",
+			"email": "m_nadine@CPAM.fr",
+			"phone": "+33612457845",
+			"company_name": "Caisse Primaire d'Assurance Maladie",
+			"sales_contact": 5,
+			"prospect": true
+		}
+	},
+	{
+		"model": "api.client",
+		"pk": 3,
+		"fields": {
+			"date_created": "2021-07-13T08:42:59.210Z",
+			"date_updated": "2021-07-13T08:51:57.866Z",
+			"first_name": "Philippe",
+			"last_name": "Ducoin",
+			"email": "ducoin@EPA.fr",
+			"phone": "+33612457845",
+			"company_name": "En Plaine Air",
+			"sales_contact": 2,
+			"prospect": true
+		}
+	},
+	{
+		"model": "api.client",
+		"pk": 4,
+		"fields": {
+			"date_created": "2021-06-13T08:42:59.210Z",
+			"date_updated": "2021-07-13T08:51:57.866Z",
+			"first_name": "Hervé",
+			"last_name": "Schmidt",
+			"email": "Schmidt@ODM.fr",
+			"phone": "+33612457845",
+			"company_name": "Ordre des Medecins",
+			"sales_contact": 2,
+			"prospect": true
+		}
+	},
+	{
+		"model": "api.client",
+		"pk": 5,
+		"fields": {
+			"date_created": "2021-06-13T08:42:59.210Z",
+			"date_updated": "2021-07-13T08:51:57.866Z",
+			"first_name": "Emmanuel",
+			"last_name": "WALDNER",
+			"email": "waldner@OVS.fr",
+			"phone": "+33612457845",
+			"company_name": "On va sortir",
+			"sales_contact": 2,
+			"prospect": true
 		}
 	}
 ]

@@ -5,8 +5,8 @@ from django.core import exceptions
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from . import models
 from user.models import User
+from . import models
 from .models import Client, Contrat, Event
 
 
@@ -107,10 +107,10 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
             if validated_data['status']:
                 self.instance.client.prospect = False
                 self.instance = self.update(self.instance, validated_data)
-                Client.objects.update(id=self.instance.client_id, prospect=False)
+                Client.objects.filter(id=self.instance.client_id).update(prospect=False)
                 event_exist = Event.objects.filter(contrat_id=self.instance.pk).exists()
                 if not event_exist:
-                    evt = Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
+                    Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
         else:
             self.instance = self.create(validated_data)
             assert self.instance is not None, (
@@ -118,7 +118,7 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
             )
             if validated_data['status']:
                 Event.objects.create(contrat_id=self.instance.pk, client=validated_data['client'])
-                Client.objects.update(id=self.instance.client_id, prospect=False)
+                Client.objects.filter(id=self.instance.client_id).update(prospect=False)
 
         return self.instance
 

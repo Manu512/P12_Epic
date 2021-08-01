@@ -1,10 +1,8 @@
-from itertools import chain
-
-from django.contrib import admin
 from django import forms
+from django.contrib import admin
 
-from .models import Contrat, Event, Client
 from user.models import User
+from .models import Contrat, Event, Client
 
 admin.AdminSite.site_header = 'EPIC Event administration'
 admin.AdminSite.site_title = 'EPIC Event'

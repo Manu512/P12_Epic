@@ -1,14 +1,11 @@
 """ views.pu"""
-import django_filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions, status
-from rest_framework.filters import SearchFilter
-
 from rest_framework.response import Response
-from .models import Contrat, Event, Client
 
-from .serializers import ClientSerializer, EventSerializer, ContratSerializer
+from .models import Contrat, Event, Client
 from .permissions import VendorTeam, SupportTeam
+from .serializers import ClientSerializer, EventSerializer, ContratSerializer
 
 
 # Create your views here.
@@ -48,9 +45,7 @@ class ContratViewSet(viewsets.ModelViewSet):
         if amount is not None:
             queryset = queryset.filter(client__contrat__amount=amount)
 
-
         return queryset
-
 
     def destroy(self, request, *args, **kwargs):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
@@ -66,7 +61,6 @@ class EventViewSet(viewsets.ModelViewSet):
     filter_fields = ['event_date']
 
     def get_queryset(self):
-    # TODO : Les filtres !!!!
         queryset = Event.objects.all()
         client = self.request.query_params.get('client')
         if client is not None:

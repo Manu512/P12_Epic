@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from .models import User
 
+
 class UserChangeForm(forms.ModelForm):
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
@@ -38,14 +39,14 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('username', 'password')}),
         ('Info Personnel', {'fields': ('first_name', 'last_name', 'email')}),
         ('Permissions', {
-            'fields': ('team', 'is_active',  'is_staff', 'groups'),
+            'fields': ('team', 'is_active', 'is_staff', 'groups'),
         }),
         ('Historique', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'last_name',  'first_name', 'is_staff', 'team', 'email', 'password1', 'password2'),
+            'fields': ('username', 'last_name', 'first_name', 'is_staff', 'team', 'email', 'password1', 'password2'),
         }),
     )
     list_display = ('username', 'first_name', 'last_name', 'team')
@@ -55,7 +56,4 @@ class CustomUserAdmin(UserAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
 
-
 admin.site.register(User, CustomUserAdmin)
-
-

@@ -1,0 +1,5 @@
+[flake8]
+exclude = .git,.vscode,.idea, bin/ ,__pycache__ ,docs/source/conf.py, old,build,dist,venv/, migrations
+max-line-length = 119
+format = html
+htmldir = flake-report

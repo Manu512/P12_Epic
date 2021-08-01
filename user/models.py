@@ -1,16 +1,15 @@
 from django.contrib.auth import password_validation
-from django.db import models
-from django.contrib.auth.models import Group
-from django.contrib import admin
-# Create your models here.
-from api.models import Client, Contrat, Event
 from django.contrib.auth.models import AbstractUser, Group
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+# Create your models here.
+from api.models import Client, Contrat, Event
 
-vendor_group, created = Group.objects.get_or_create(name='Equipe commerciale')
-support_group, created = Group.objects.get_or_create(name='Equipe support')
-manager_group, created = Group.objects.get_or_create(name='Equipe de gestion')
+
+# vendor_group, created = Group.objects.get_or_create(name='Equipe commerciale')
+# support_group, created = Group.objects.get_or_create(name='Equipe support')
+# manager_group, created = Group.objects.get_or_create(name='Equipe de gestion')
 
 
 class User(AbstractUser):
@@ -58,8 +57,8 @@ class User(AbstractUser):
     team = models.CharField(max_length=20, choices=Team.choices,
                             default=Team.MANAGER, verbose_name='Equipe',
                             null=False, blank=False)
+
     class Meta:
         ordering = ['id']
         verbose_name = "Utilisateur"
         verbose_name_plural = "Utilisateurs"
-

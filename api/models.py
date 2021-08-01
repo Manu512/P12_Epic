@@ -1,8 +1,8 @@
 """models.py"""
 
-from phonenumber_field.modelfields import PhoneNumberField
 from django.conf import settings
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class TimeStampModel(models.Model):
@@ -28,7 +28,7 @@ class Client(TimeStampModel):
     company_name = models.CharField('Compagnie', max_length=250)
     sales_contact = models.ForeignKey(verbose_name='Commercial', to=settings.AUTH_USER_MODEL,
                                       related_name='sales_by', on_delete=models.CASCADE,
-                                      limit_choices_to={'groups__name': "Equipe commercial"},)
+                                      limit_choices_to={'groups__name': "Equipe commercial"}, )
     prospect = models.BooleanField(default=True)
 
     def __str__(self):
@@ -69,7 +69,7 @@ class Event(TimeStampModel):
     Définition de l'objet Event
     """
     contrat = models.OneToOneField(verbose_name='Contrat', to='Contrat', on_delete=models.CASCADE, primary_key=True,
-                              unique=True)
+                                   unique=True)
     client = models.ForeignKey(to='Client', on_delete=models.CASCADE)
     support_contact = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                         limit_choices_to={'groups__name': "Equipe support"},
