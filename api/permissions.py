@@ -1,5 +1,14 @@
 """ Gestion des Permissions """
+import logging
 from rest_framework import permissions
+
+logger = logging.getLogger(__name__)
+
+
+def wrong_acces_logging(request):
+    msg = "user : {}, detail: without permission, url: {}"\
+        .format(request.user.username, request)
+    logger.error(msg)
 
 
 class VendorTeam(permissions.BasePermission):
@@ -16,6 +25,9 @@ class VendorTeam(permissions.BasePermission):
         elif request.user.is_vendor() or request.user.is_management():
             access = True
 
+        if access == False:
+            wrong_acces_logging(request)
+
         return access
 
     def has_object_permission(self, request, view, obj):
@@ -28,6 +40,7 @@ class VendorTeam(permissions.BasePermission):
             access = False
         elif request.user.is_affected(obj) or request.user.is_management():
             access = True
+
         return access
 
 
@@ -41,6 +54,9 @@ class SupportTeam(permissions.BasePermission):
             access = False
         elif request.user.is_vendor() or request.user.is_management():
             access = True
+
+        if access == False:
+            wrong_acces_logging(request)
 
         return access
 

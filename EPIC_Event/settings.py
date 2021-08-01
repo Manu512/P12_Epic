@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from datetime import timedelta
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -198,4 +199,33 @@ SIMPLE_JWT = {
 
         'JTI_CLAIM':                       'jti',
 
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'file': {
+            'format': '%(levelname)s %(asctime)s %(module)s: %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'formatter': 'file',
+        },
+        'console': {
+                'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        '': {
+                'handlers': ['file', 'console'],
+                'level': 'ERROR',
+                'propagate': True,
+                'level': os.getenv('DJANGO_LOG_LEVEL', 'ERROR')
+        },
+    },
 }
