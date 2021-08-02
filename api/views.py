@@ -33,7 +33,7 @@ class ClientViewSet(viewsets.ModelViewSet):
         return Client.objects.all()
 
     def destroy(self, request, *args, **kwargs):
-        content = {"detail": "Client can't be deleted."}
+        content = {"detail": "Client can't be deleted with the api."}
         log(content)
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
@@ -62,7 +62,7 @@ class ContratViewSet(viewsets.ModelViewSet):
         return queryset
 
     def destroy(self, request, *args, **kwargs):
-        content = {"detail": "Contrat can't be deleted."}
+        content = {"detail": "Contrat can't be deleted with the api."}
         log(content)
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
@@ -88,6 +88,6 @@ class EventViewSet(viewsets.ModelViewSet):
         return queryset
 
     def destroy(self, request, *args, **kwargs):
-        content = {"detail": "Contrat can't be deleted."}
+        content = {"detail": "Event can't be deleted with the api."}
         log(content)
         return Response(status=status.HTTP_401_UNAUTHORIZED)

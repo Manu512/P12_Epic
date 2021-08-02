@@ -1,0 +1,1 @@
+ERROR 2021-08-01 18:34:26,690 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/5/'>
