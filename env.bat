@@ -1,2 +1,3 @@
 set PYTHONPATH=%cd%
 set DJANGO_SETTINGS_MODULE=EPIC_Event.settings
+SET COVERAGE_RCFILE=%PYTHONPATH%\tests\.coveragerc

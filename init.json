@@ -544,7 +544,7 @@
 			"phone": "+33612457845",
 			"company_name": "En Plaine Air",
 			"sales_contact": 2,
-			"prospect": true
+			"prospect": false
 		}
 	},
 	{
@@ -576,5 +576,45 @@
 			"sales_contact": 2,
 			"prospect": true
 		}
-	}
+	},
+  {
+    "model": "api.contrat",
+    "pk": 1,
+    "fields": {
+      "date_created": "2021-08-02T12:54:11.711Z",
+      "date_updated": "2021-08-02T12:54:56.887Z",
+      "sales_contact": 2,
+      "client": 4,
+      "status": false,
+      "amount": 1.0,
+      "payement_due": "2021-08-02"
+    }
+  },
+  {
+    "model": "api.contrat",
+    "pk": 2,
+    "fields": {
+      "date_created": "2021-08-02T13:44:14.376Z",
+      "date_updated": "2021-08-02T13:44:14.472Z",
+      "sales_contact": 2,
+      "client": 3,
+      "status": true,
+      "amount": 1564654.0,
+      "payement_due": "2021-08-27"
+    }
+  },
+  {
+    "model": "api.event",
+    "pk": 1,
+    "fields": {
+      "date_created": "2021-08-02T13:44:14.422Z",
+      "date_updated": "2021-08-02T14:25:46.998Z",
+      "client": 3,
+      "support_contact": 3,
+      "event_date": null,
+      "event_status": "Affecté",
+      "attendees": 1,
+      "notes": ""
+    }
+  }
 ]

@@ -51,9 +51,12 @@ class ContratForm(forms.ModelForm):
     Contract Form object in the administration interface.
     Formulaire des contrats dans l'interface d'administration.
     """
+
     class Meta:
         model = Contrat
         fields = '__all__'
+
+
 
     def save(self, commit=True):
         """
@@ -81,6 +84,8 @@ class ContratForm(forms.ModelForm):
         else:
             # If not committing, add a method to the form to allow deferred
             # saving of m2m data.
+            self.instance.sales_contact = self.instance.client.sales_contact
+            self.instance.save()
             self.save_m2m = self._save_m2m
 
         # Si le contrat est signé, on crée un evenement si celui ci n'existe pas encore.
@@ -133,10 +138,21 @@ class EventAdmin(admin.ModelAdmin):
         # Si l'evenement est fini et que ce n'est pas l'equipe de Gestion qui consulte ==> Lecture Seule
         if not request.user.team == "Equipe de gestion" and obj.event_status == 'Terminé':
             return [f.name for f in self.model._meta.fields]
-        # Ce n'est pas l'equipe de Gestion et que ce n'est pas la personne affecte ou le commercial ==> Lecture Seule
+        # C'est le commercial affecté
+        elif user == obj.contrat.sales_contact_id:
+
+            return ['support_contact', 'client']
+
+        # Ce n'est pas l'equipe de Gestion et que ce n'est pas la personne affecte  ==> Lecture Seule
         elif not request.user.team == "Equipe de gestion" \
                 and user != obj.support_contact_id and user != obj.contrat.sales_contact_id:
-            return [f.name for f in self.model._meta.fields]
+
+            read_only = [f.name for f in self.model._meta.fields]
+
+            return read_only
+
+
+
 
         return super(EventAdmin, self).get_readonly_fields(
             request, obj=obj
@@ -179,11 +195,14 @@ class ContratAdmin(admin.ModelAdmin):
         :param obj:
         :return:
         """
-        if not request.user.is_superuser and obj.status is True:
-            return [f.name for f in self.model._meta.fields]
-        return super(ContratAdmin, self).get_readonly_fields(
-            request, obj=obj
-        )
+        if obj is not None:
+            if not request.user.is_superuser and obj.status is True:
+                return [f.name for f in self.model._meta.fields]
+            return super(ContratAdmin, self).get_readonly_fields(
+                request, obj=obj)
+        else:
+            return super(ContratAdmin, self).get_readonly_fields(
+                request, obj=obj)
 
 
 class ClientAdmin(admin.ModelAdmin):

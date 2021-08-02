@@ -1,1 +1,971 @@
 ERROR 2021-08-01 18:34:26,690 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/5/'>
+ERROR 2021-08-02 13:28:24,639 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:30:27,729 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:30:27,964 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:37:09,969 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:37:10,277 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:37:10,511 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/?client=WALDNER'>
+ERROR 2021-08-02 13:37:10,743 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/?email=Schmidt@ODM.fr'>
+ERROR 2021-08-02 13:38:04,939 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:38:05,245 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 13:54:51,345 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 680, in get_form
+    readonly_fields = self.get_readonly_fields(request, obj)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 182, in get_readonly_fields
+    if not request.user.is_superuser and obj.status is True:
+AttributeError: 'NoneType' object has no attribute 'status'
+ERROR 2021-08-02 14:08:32,888 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 680, in get_form
+    readonly_fields = self.get_readonly_fields(request, obj)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 182, in get_readonly_fields
+    if not request.user.is_superuser and obj.status is True:
+AttributeError: 'NoneType' object has no attribute 'status'
+ERROR 2021-08-02 14:10:33,464 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 681, in get_form
+    exclude.extend(readonly_fields)
+TypeError: 'NoneType' object is not iterable
+ERROR 2021-08-02 14:14:37,841 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 681, in get_form
+    exclude.extend(readonly_fields)
+TypeError: 'NoneType' object is not iterable
+ERROR 2021-08-02 14:16:11,572 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (2, 2021-08-02 12:16:11.477382+00, 2021-08-02 12:16:11.477882+00, f, 12540, 2021-08-02, 2, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (2, 2021-08-02 12:16:11.477382+00, 2021-08-02 12:16:11.477882+00, f, 12540, 2021-08-02, 2, null).
+
+ERROR 2021-08-02 14:17:21,692 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (3, 2021-08-02 12:17:21.302301+00, 2021-08-02 12:17:21.302301+00, f, 12540, 2021-08-02, 2, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (3, 2021-08-02 12:17:21.302301+00, 2021-08-02 12:17:21.302301+00, f, 12540, 2021-08-02, 2, null).
+
+ERROR 2021-08-02 14:21:54,052 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1581, in _changeform_view
+    new_object = self.save_form(request, form, change=not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1093, in save_form
+    return form.save(commit=False)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 84, in save
+    self.cleaned_data['sales_contact']=self.request
+AttributeError: 'ContratForm' object has no attribute 'request'
+ERROR 2021-08-02 14:30:20,018 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1581, in _changeform_view
+    new_object = self.save_form(request, form, change=not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1093, in save_form
+    return form.save(commit=False)
+TypeError: save() missing 1 required positional argument: 'request'
+ERROR 2021-08-02 14:46:48,870 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (4, 2021-08-02 12:46:48.514633+00, 2021-08-02 12:46:48.514633+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (4, 2021-08-02 12:46:48.514633+00, 2021-08-02 12:46:48.514633+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:48:47,533 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (5, 2021-08-02 12:48:47.29734+00, 2021-08-02 12:48:47.29734+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (5, 2021-08-02 12:48:47.29734+00, 2021-08-02 12:48:47.29734+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:48:59,404 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (6, 2021-08-02 12:48:59.057272+00, 2021-08-02 12:48:59.057272+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (6, 2021-08-02 12:48:59.057272+00, 2021-08-02 12:48:59.057272+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:49:34,168 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (7, 2021-08-02 12:49:33.822093+00, 2021-08-02 12:49:33.822093+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (7, 2021-08-02 12:49:33.822093+00, 2021-08-02 12:49:33.822093+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:50:46,842 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (8, 2021-08-02 12:50:46.494923+00, 2021-08-02 12:50:46.494923+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (8, 2021-08-02 12:50:46.494923+00, 2021-08-02 12:50:46.494923+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:51:14,972 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (9, 2021-08-02 12:51:14.628239+00, 2021-08-02 12:51:14.628239+00, f, 1, 2021-08-02, 4, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1586, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1099, in save_model
+    obj.save()
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "sales_contact_id" violates not-null constraint
+DETAIL:  Failing row contains (9, 2021-08-02 12:51:14.628239+00, 2021-08-02 12:51:14.628239+00, f, 1, 2021-08-02, 4, null).
+
+ERROR 2021-08-02 14:52:52,292 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1581, in _changeform_view
+    new_object = self.save_form(request, form, change=not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1093, in save_form
+    return form.save(commit=False)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 87, in save
+    self.instance['sales_contact'] = self.instance.client.sales_contact
+TypeError: 'Contrat' object does not support item assignment
+ERROR 2021-08-02 14:55:13,675 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "contrat_id" violates not-null constraint
+DETAIL:  Failing row contains (2021-08-02 12:55:13.560674+00, 2021-08-02 12:55:13.560674+00, null, null, Créé, 1, , 1, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1581, in _changeform_view
+    new_object = self.save_form(request, form, change=not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1093, in save_form
+    return form.save(commit=False)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 96, in save
+    Event.objects.create(contrat_id=self.instance.pk, client_id=self.instance.client.id)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "contrat_id" violates not-null constraint
+DETAIL:  Failing row contains (2021-08-02 12:55:13.560674+00, 2021-08-02 12:55:13.560674+00, null, null, Créé, 1, , 1, null).
+
+ERROR 2021-08-02 14:57:08,150 log: Internal Server Error: /administration/api/contrat/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+psycopg2.errors.NotNullViolation: null value in column "contrat_id" violates not-null constraint
+DETAIL:  Failing row contains (2021-08-02 12:57:08.035385+00, 2021-08-02 12:57:08.035385+00, null, null, Créé, 1, , 1, null).
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1581, in _changeform_view
+    new_object = self.save_form(request, form, change=not add)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1093, in save_form
+    return form.save(commit=False)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 96, in save
+    Event.objects.create(contrat_id=self.instance.pk, client_id=self.instance.client.id)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 198, in execute
+    return self._record(self.cursor.execute, sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\debug_toolbar\panels\sql\tracking.py", line 133, in _record
+    return method(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+django.db.utils.IntegrityError: null value in column "contrat_id" violates not-null constraint
+DETAIL:  Failing row contains (2021-08-02 12:57:08.035385+00, 2021-08-02 12:57:08.035385+00, null, null, Créé, 1, , 1, null).
+
+ERROR 2021-08-02 16:01:25,922 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 16:01:26,141 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 16:06:00,186 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 16:06:00,417 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 16:06:46,918 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:06:47,234 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:20:18,345 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:20:18,531 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:21:51,437 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:21:52,287 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:23:51,242 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:23:52,124 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/10/'>
+ERROR 2021-08-02 16:38:32,723 log: Internal Server Error: /administration/api/event/11/change/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1660, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 680, in get_form
+    readonly_fields = self.get_readonly_fields(request, obj)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 143, in get_readonly_fields
+    read_only = [f.name for f in self.model._meta.fields is not 'support_contact']
+TypeError: 'bool' object is not iterable
+ERROR 2021-08-02 16:38:45,249 log: Internal Server Error: /administration/api/event/11/change/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1660, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 680, in get_form
+    readonly_fields = self.get_readonly_fields(request, obj)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 143, in get_readonly_fields
+    read_only = [f.name for f in self.model._meta.fields is not 'support_contact']
+TypeError: 'bool' object is not iterable
+ERROR 2021-08-02 16:58:08,589 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-02 16:58:08,806 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>

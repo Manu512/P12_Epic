@@ -74,7 +74,7 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [permissions.IsAuthenticated, SupportTeam]
     filter_backends = [DjangoFilterBackend]
-    filter_fields = ['event_date']
+    filterset_fields = ['event_date']
 
     def get_queryset(self):
         queryset = Event.objects.all()
