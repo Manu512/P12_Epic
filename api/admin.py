@@ -1,3 +1,4 @@
+"""api admin.py"""
 from django import forms
 from django.contrib import admin
 
@@ -9,6 +10,10 @@ admin.AdminSite.site_title = 'EPIC Event'
 
 
 class EventForm(forms.ModelForm):
+    """
+    Event Form object in the administration interface.
+    Formulaire d'evenement dans l'interface d'administration.
+    """
     class Meta:
         model = Event
         fields = '__all__'
@@ -42,11 +47,26 @@ class EventForm(forms.ModelForm):
 
 
 class ContratForm(forms.ModelForm):
+    """
+    Contract Form object in the administration interface.
+    Formulaire des contrats dans l'interface d'administration.
+    """
     class Meta:
         model = Contrat
         fields = '__all__'
 
     def save(self, commit=True):
+        """
+        Function to save a contract object and validate certain fields.
+        For example if the contract is signed (status is true), the prospect is no longer a prospect but a customer.
+        Similarly for the contract, if it is signed, an event must be attached to it.
+
+        Fonction de sauvegarde d'un objet contrat et qui va valider certain champs.
+        Par exemple si le contrat est signé (status is true), le prospect n'est plus un prospect mais un client.
+        De meme pour le contrat, si il est signé, un event doit y etre rattaché.
+        :param kwargs:
+        :return:
+        """
         if self.errors:
             raise ValueError(
                 "The %s could not be %s because the data didn't validate." % (
@@ -78,6 +98,10 @@ class ContratForm(forms.ModelForm):
 
 
 class EventAdmin(admin.ModelAdmin):
+    """
+    Event object in the administration interface.
+    Objet Evenement dans l'interface d'administration.
+    """
     form = EventForm
     readonly_fields = [
         'date_created', 'date_updated'
@@ -98,6 +122,13 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('event_date',)
 
     def get_readonly_fields(self, request, obj=None):
+        """
+        Function allowing to pass some attribute in read only according to the conditions defined below.
+        Fonction permettant de passer certain attribut en lecture seule selon les conditions défini ci-dessous.
+        :param request:
+        :param obj:
+        :return:
+        """
         user = request.user.id
         # Si l'evenement est fini et que ce n'est pas l'equipe de Gestion qui consulte ==> Lecture Seule
         if not request.user.team == "Equipe de gestion" and obj.event_status == 'Terminé':
@@ -117,6 +148,10 @@ class EventInline(admin.TabularInline):
 
 
 class ContratAdmin(admin.ModelAdmin):
+    """
+    Contract object in the administration interface.
+    Objet Contrat dans l'interface d'administration.
+    """
     form = ContratForm
     inlines = [
         EventInline,
@@ -137,6 +172,13 @@ class ContratAdmin(admin.ModelAdmin):
     ordering = ('date_created',)
 
     def get_readonly_fields(self, request, obj=None):
+        """
+        Function allowing to pass some attribute in read only according to the conditions defined below.
+        Fonction permettant de passer certain attribut en lecture seule selon les conditions défini ci-dessous.
+        :param request:
+        :param obj:
+        :return:
+        """
         if not request.user.is_superuser and obj.status is True:
             return [f.name for f in self.model._meta.fields]
         return super(ContratAdmin, self).get_readonly_fields(
@@ -145,6 +187,10 @@ class ContratAdmin(admin.ModelAdmin):
 
 
 class ClientAdmin(admin.ModelAdmin):
+    """
+    Client object in the administration interface.
+    Objet Client dans l'interface d'administration.
+    """
     readonly_fields = [
         'date_created', 'date_updated', 'sales_contact'
     ]

@@ -6,6 +6,10 @@ logger = logging.getLogger(__name__)
 
 
 def wrong_acces_logging(request):
+    """
+    Function that logs unauthorized access attempts to various endpoints
+    :param request:
+    """
     msg = "user : {}, detail: without permission, url: {}"\
         .format(request.user.username, request)
     logger.error(msg)
@@ -25,7 +29,7 @@ class VendorTeam(permissions.BasePermission):
         elif request.user.is_vendor() or request.user.is_management():
             access = True
 
-        if access == False:
+        if access is False:
             wrong_acces_logging(request)
 
         return access
@@ -40,6 +44,9 @@ class VendorTeam(permissions.BasePermission):
             access = False
         elif request.user.is_affected(obj) or request.user.is_management():
             access = True
+
+        if access is False:
+            wrong_acces_logging(request)
 
         return access
 
@@ -55,7 +62,7 @@ class SupportTeam(permissions.BasePermission):
         elif request.user.is_vendor() or request.user.is_management():
             access = True
 
-        if access == False:
+        if access is False:
             wrong_acces_logging(request)
 
         return access
@@ -70,4 +77,8 @@ class SupportTeam(permissions.BasePermission):
             access = False
         elif request.user.is_affected(obj) or request.user.is_management():
             access = True
+
+        if access is False:
+            wrong_acces_logging(request)
+
         return access

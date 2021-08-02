@@ -1,3 +1,4 @@
+"""user admin.py"""
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
@@ -16,6 +17,11 @@ class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField
 
     def save(self, commit=True):
+        """
+        Save function of the UserAdmin form.
+
+        Fonction de sauvegarde du formulaire UserAdmin.
+        """
         # Save the provided password in hashed format
         user = super().save(commit=False)
 
@@ -29,6 +35,11 @@ class UserChangeForm(forms.ModelForm):
 
 
 class CustomUserAdmin(UserAdmin):
+    """
+    User object in the administration interface.
+    Objet User dans l'interface d'administration.
+    """
+
     model = User
 
     readonly_fields = [

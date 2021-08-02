@@ -11,6 +11,9 @@ from .models import Client, Contrat, Event
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    API endpoint for create User / Not Active
+    """
     email = serializers.EmailField(
         validators=[UniqueValidator(User.objects.all())]
     )
@@ -20,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'team']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -55,6 +58,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ClientSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    API endpoint for Clients
+    """
     id = serializers.IntegerField(read_only=True)
     email = serializers.EmailField(
         validators=[UniqueValidator(models.Client.objects.all())]
@@ -83,6 +89,9 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ContratSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    API endpoint for Contract
+    """
     amount = serializers.IntegerField()
     payement_due = serializers.DateField(format="%Y-%m-%d")
     sales_contact = serializers.StringRelatedField(many=False)
@@ -91,12 +100,33 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
     date_created = serializers.DateTimeField(format="%Y-%m-%dT%H:%M", read_only=True)
 
     def create(self, validated_data):
+        """
+        Function that creates an object contract and adds information from the salesperson
+         that creates the contract for the commercial follow-up.
+
+         Fonction qui crée un contrat d'objet et ajoute les informations du commercial
+         qui crée le contrat pour le suivi commercial.
+
+        :param validated_data:
+        :return: New contract
+        """
         validated_data['sales_contact'] = self.context['request'].user
         new_contrat = Contrat.objects.create(**validated_data)
         new_contrat.save()
         return new_contrat
 
     def save(self, **kwargs):
+        """
+        Function to save a contract object and validate certain fields.
+        For example if the contract is signed (status is true), the prospect is no longer a prospect but a customer.
+        Similarly for the contract, if it is signed, an event must be attached to it.
+
+        Fonction de sauvegarde d'un objet contrat et qui va valider certain champs.
+        Par exemple si le contrat est signé (status is true), le prospect n'est plus un prospect mais un client.
+        De meme pour le contrat, si il est signé, un event doit y etre rattaché.
+        :param kwargs:
+        :return:
+        """
         validated_data = {**self.validated_data, **kwargs}
 
         if self.instance is not None:
@@ -134,6 +164,9 @@ class ContratSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
+    """
+    API endpoint for Event
+    """
     contrat = serializers.StringRelatedField(many=False)
     sales_contact = serializers.StringRelatedField(many=False)
     client = serializers.StringRelatedField(many=False)
