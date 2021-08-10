@@ -1,8 +1,9 @@
 # __P12 Projet EPIC Event__
 
 ## Information :
-Le hashage des mots de passe est effectué par le hasheur Argon2 pour augmenter la sécurité.
-Pour nos tests et nos exemples d'utilisateurs, la compléxité des mots de passe a été bypassé.
+Le hashage des mots de passe est effectué par le hasheur **Argon2** pour **augmenter la sécurité.**
+
+Pour nos tests et nos exemples d'utilisateurs, la complexité des mots de passe a été bypassé.  
 Lors de la création de nouveaux users, les mots de passe devront etre complexe.
 
 
@@ -61,7 +62,7 @@ Dans le fichier settings.py renseigner correctement les données suivantes :
    Je vous conseille de charger les variables d'environnement cf Utilisation: via env.bat
    puis au choix  
    * `manage.py makemigrations` / `django-admin makemigrations`  
-   * `manage.py migrations` / `django-admin migrations` 
+   * `manage.py migrate` / `django-admin migrate` 
    * `manage.py loaddata init.json` / `django-admin loaddata init.json` 
 
 
@@ -83,8 +84,8 @@ lien documentation PostMan : https://documenter.getpostman.com/view/15567806/TzR
     - `set PYTHONPATH=%cd%` 
     - `set DJANGO_SETTINGS_MODULE=EPIC_Event.settings` 
   - Pour Windows avec PowerShell : 
-    - `$env:PYTHONPATH=%cd%` 
-    - `$env:DJANGO_SETTINGS_MODULE=EPIC_Event.settings` 
+    - `$env:PYTHONPATH=$pwd` 
+    - `$env:DJANGO_SETTINGS_MODULE="EPIC_Event.settings"` 
 
 - Vous devriez maintenant être prêt à tester l'application. Dans le répertoire, tapez soit <code>django-admin run</code>.
 L'application devrait répondre avec une adresse à laquelle vous devriez pouvoir vous rendre en utilisant votre navigateur.
@@ -95,8 +96,8 @@ Pour se loger à l'API, il faut un jeton JWT que l'on peut obtenir à l'URL :  [
 ## Les utilisateurs de base
 ### Administrateur
 
-- admin / 1234 : Full acces à l'administration. A utiliser avec parcimonie permet de modifier les autorisations des groupes.
-- En cas de modification, cela impactera egalement le fonctionnement de l'api.
+- admin / 1234 : Full acces à l'administration. À utiliser avec parcimonie permet de modifier les autorisations des groupes.
+- En cas de modification, cela impactera également le fonctionnement de l'api.
 
 ### Equipe de management
 
@@ -116,5 +117,5 @@ C'est une de ces personnes qui va etre en charge d'un évènement une fois celui
 - commercial1 / 1234  
 - commercial2 / 1234  
 
-C'est une de ces personnes qui va créer les clients/prospets ainsi que les contrats pour les evenements.
-Ils ont aussi acces aux evenements des contrats leurs étant rattachés.
+C'est une de ces personnes qui va créer les clients/prospects ainsi que les contrats pour les evenements.
+Ils ont aussi acces aux évènements des contrats qui leur sont rattachés.

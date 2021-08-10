@@ -7,9 +7,9 @@ from django.utils.translation import gettext_lazy as _
 from api.models import Client, Contrat, Event
 
 
-# vendor_group, created = Group.objects.get_or_create(name='Equipe commerciale')
-# support_group, created = Group.objects.get_or_create(name='Equipe support')
-# manager_group, created = Group.objects.get_or_create(name='Equipe de gestion')
+vendor_group, created = Group.objects.get_or_create(name='Equipe commerciale')
+support_group, created = Group.objects.get_or_create(name='Equipe support')
+manager_group, created = Group.objects.get_or_create(name='Equipe de gestion')
 
 
 class User(AbstractUser):
