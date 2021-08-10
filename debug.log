@@ -969,3 +969,5 @@ Traceback (most recent call last):
 TypeError: 'bool' object is not iterable
 ERROR 2021-08-02 16:58:08,589 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
 ERROR 2021-08-02 16:58:08,806 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-10 16:00:49,173 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-10 16:00:49,361 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
