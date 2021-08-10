@@ -11,6 +11,7 @@ pytestmark = pytest.mark.django_db
 endpoints = ["client", "contrat", "event"]
 endpoints_details = ["client/1/", "contrat/1/"]
 
+
 @pytest.mark.django_db
 class TestUsers:
     pytestmark = pytest.mark.django_db
@@ -229,4 +230,3 @@ class TestAPI:
         self.client.login(username=username, password=password)
         response = self.client.get('/api/client/?email=Schmidt@ODM.fr')
         assert response.status_code == 200
-

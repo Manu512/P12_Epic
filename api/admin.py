@@ -14,6 +14,7 @@ class EventForm(forms.ModelForm):
     Event Form object in the administration interface.
     Formulaire d'evenement dans l'interface d'administration.
     """
+
     class Meta:
         model = Event
         fields = '__all__'
@@ -56,8 +57,6 @@ class ContratForm(forms.ModelForm):
         model = Contrat
         fields = '__all__'
 
-
-
     def save(self, commit=True):
         """
         Function to save a contract object and validate certain fields.
@@ -88,7 +87,7 @@ class ContratForm(forms.ModelForm):
             self.instance.save()
             self.save_m2m = self._save_m2m
 
-        # Si le contrat est signé, on crée un evenement si celui ci n'existe pas encore.
+        # Si le contrat est signé, on crée un évènement si celui-ci n'existe pas encore.
         # De plus le client change de status, ce n'est plus un prospect
 
         if self.cleaned_data['status']:
@@ -150,9 +149,6 @@ class EventAdmin(admin.ModelAdmin):
             read_only = [f.name for f in self.model._meta.fields]
 
             return read_only
-
-
-
 
         return super(EventAdmin, self).get_readonly_fields(
             request, obj=obj
