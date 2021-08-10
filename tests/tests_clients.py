@@ -113,7 +113,7 @@ class TestUsers:
     def test_client_3(self):
         me = Clt.objects.get(pk=3)
         assert me.company_name == "En Plaine Air"
-        assert me.prospect
+        assert not me.prospect
         assert User.objects.get(id=me.sales_contact_id).team == 'Equipe commerciale'
 
     def test_client_4(self):

@@ -605,7 +605,7 @@
   },
   {
     "model": "api.event",
-    "pk": 1,
+    "pk": 2,
     "fields": {
       "date_created": "2021-08-02T13:44:14.422Z",
       "date_updated": "2021-08-02T14:25:46.998Z",
