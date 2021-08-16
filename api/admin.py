@@ -111,7 +111,7 @@ class EventAdmin(admin.ModelAdmin):
         'date_created', 'date_updated'
     ]
     fieldsets = [
-        ('Suivi par', {'fields': ['contrat', 'support_contact', ]}),
+        # ('Suivi par', {'fields': ['contrat', 'support_contact', ]}),
         ("Informations concernant l'événément", {'fields': [
             'client',
             'event_date',
@@ -138,9 +138,9 @@ class EventAdmin(admin.ModelAdmin):
         if not request.user.team == "Equipe de gestion" and obj.event_status == 'Terminé':
             return [f.name for f in self.model._meta.fields]
         # C'est le commercial affecté
-        elif user == obj.contrat.sales_contact_id:
+        elif user == obj.contrat.sales_contact_id or user == obj.support_contact_id:
 
-            return ['support_contact', 'client']
+            return ['support_contact', 'client', 'contrat', 'support_contact']
 
         # Ce n'est pas l'equipe de Gestion et que ce n'est pas la personne affecte  ==> Lecture Seule
         elif not request.user.team == "Equipe de gestion" \

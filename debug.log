@@ -975,3 +975,32 @@ ERROR 2021-08-10 16:42:07,679 permissions: user : commercial1, detail: without p
 ERROR 2021-08-10 16:42:07,867 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
 ERROR 2021-08-10 16:43:14,852 permissions: user : commercial1, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
 ERROR 2021-08-10 16:43:15,041 permissions: user : management, detail: without permission, url: <rest_framework.request.Request: DELETE '/api/client/1/'>
+ERROR 2021-08-11 22:33:22,770 log: Internal Server Error: /administration/api/event/add/
+Traceback (most recent call last):
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 1574, in _changeform_view
+    ModelForm = self.get_form(
+  File "D:\OpenClassRoom\EPIC_Event\bin\lib\site-packages\django\contrib\admin\options.py", line 680, in get_form
+    readonly_fields = self.get_readonly_fields(request, obj)
+  File "D:\OpenClassRoom\EPIC_Event\api\admin.py", line 138, in get_readonly_fields
+    if not request.user.team == "Equipe de gestion" and obj.event_status == 'Terminé':
+AttributeError: 'NoneType' object has no attribute 'event_status'
