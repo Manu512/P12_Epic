@@ -20,6 +20,7 @@ class EventForm(forms.ModelForm):
         fields = '__all__'
 
     def save(self, commit=True):
+
         if self.errors:
             raise ValueError(
                 "The %s could not be %s because the data didn't validate." % (
@@ -39,8 +40,8 @@ class EventForm(forms.ModelForm):
         # Si le contrat est signé, on crée un evenement si celui ci n'existe pas encore.
         # De plus le client change de status, ce n'est plus un prospect
 
-        if isinstance(self.cleaned_data['support_contact'], User):
-            if self.cleaned_data['event_status'] == 'Créé':
+        if isinstance(self.instance.support_contact, User):
+            if self.instance.event_status == 'Créé':
                 self.instance.event_status = 'Affecté'
                 self.instance.save()
                 self._save_m2m()
@@ -90,14 +91,15 @@ class ContratForm(forms.ModelForm):
         # Si le contrat est signé, on crée un évènement si celui-ci n'existe pas encore.
         # De plus le client change de status, ce n'est plus un prospect
 
-        if self.cleaned_data['status']:
-            evt = Event.objects.filter(contrat_id=self.instance.pk).exists()
-            if not evt:
-                Event.objects.create(contrat_id=self.instance.pk, client_id=self.instance.client.id)
-            clt = Client.objects.get(id=self.instance.client.id)
-            if clt.prospect:
-                clt.prospect = False
-                clt.save()
+        if len(self.cleaned_data):
+            if self.cleaned_data['status']:
+                evt = Event.objects.filter(contrat_id=self.instance.pk).exists()
+                if not evt:
+                    Event.objects.create(contrat_id=self.instance.pk, client_id=self.instance.client.id)
+                clt = Client.objects.get(id=self.instance.client.id)
+                if clt.prospect:
+                    clt.prospect = False
+                    clt.save()
         return self.instance
 
 
@@ -111,7 +113,7 @@ class EventAdmin(admin.ModelAdmin):
         'date_created', 'date_updated'
     ]
     fieldsets = [
-        # ('Suivi par', {'fields': ['contrat', 'support_contact', ]}),
+        ('Suivi par', {'fields': ['support_contact', ]}),
         ("Informations concernant l'événément", {'fields': [
             'client',
             'event_date',
