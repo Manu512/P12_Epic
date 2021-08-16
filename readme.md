@@ -77,7 +77,7 @@ L'interface web est accessible à l'URL : [http://127.0.0.1:8000/administration/
 
 lien documentation PostMan : https://documenter.getpostman.com/view/15567806/TzRX9kbR
 
-  QuickStart pour Windows : exécutez `env.bat` dans le répertoire principal, il définira les variables d'environnement. Les détails étape par 
+  QuickStart pour Windows : exécutez `env.bat` ou `env.ps1` selon l'environnement, il définira les variables d'environnement. Les détails étape par 
   pas à pas ci-dessous.
 
   - Pour Windows, dans le répertoire : 
