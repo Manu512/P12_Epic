@@ -203,11 +203,56 @@ class ContratAdmin(admin.ModelAdmin):
                 request, obj=obj)
 
 
+class ClientForm(forms.ModelForm):
+    """
+    Client Form object in the administration interface.
+    Formulaire des clients dans l'interface d'administration.
+    """
+
+    class Meta:
+        model = Client
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        # accéder de l'objet request n'importe où en utilisant self.request
+        # access request anywhere in your form methods by using self.request
+        super(ClientForm, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        """
+        Function to save a Client object and add certain fields.
+
+        Fonction de sauvegarde d'un objet client et qui va ajouter certains champs.
+        Ajout dans le champ commercial l'objet User de la personne logué.
+        """
+        if self.errors:
+            raise ValueError(
+                "The %s could not be %s because the data didn't validate." % (
+                    self.instance._meta.object_name,
+                    'created' if self.instance._state.adding else 'changed',
+                )
+            )
+        if commit:
+            # If committing, save the instance and the m2m data immediately.
+            self.instance.save()
+            self._save_m2m()
+        else:
+            # If not committing, add a method to the form to allow deferred
+            # saving of m2m data.
+            self.instance.sales_contact = self.request.user
+            self.instance.save()
+            self.save_m2m = self._save_m2m
+        return self.instance
+
+
 class ClientAdmin(admin.ModelAdmin):
     """
     Client object in the administration interface.
     Objet Client dans l'interface d'administration.
     """
+    form = ClientForm
+
     readonly_fields = [
         'date_created', 'date_updated', 'sales_contact'
     ]
@@ -225,6 +270,17 @@ class ClientAdmin(admin.ModelAdmin):
     list_filter = ('prospect', 'company_name', 'date_updated', 'date_created')
     search_fields = ('first_name', 'last_name', 'email',)
     ordering = ('date_created',)
+
+    def get_form(self, request, obj=None, **kwargs):
+
+        AdminForm = super(ClientAdmin, self).get_form(request, obj, **kwargs)
+
+        class AdminFormWithRequest(AdminForm):
+            def __new__(cls, *args, **kwargs):
+                kwargs['request'] = request
+                return AdminForm(*args, **kwargs)
+
+        return AdminFormWithRequest
 
 
 admin.site.register(Client, ClientAdmin)
